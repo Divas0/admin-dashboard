@@ -54,3 +54,15 @@ exports.changePassword = async (req, res) => {
       .send({ message: "Error changing password", error: error.message });
   }
 };
+
+exports.getAllUser=async (req,res)=>{
+  try {
+    const user=  await User.find({});
+    return res.status(200).send({user, message:"users fetched succesfully"})
+    
+  } catch (error) {
+    return res
+    .status(500)
+    .send({message:'failed to fetch all users', error})
+  }
+}

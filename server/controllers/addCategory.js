@@ -45,3 +45,15 @@ exports.addSubCategory = async (req, res) => {
       .send({ message: "Error adding  category", error: error.message });
   }
 };
+
+exports.allCategory=async(req,res)=> {
+  try {
+    const category=  await Category.find({});
+    return res.status(200).send({category, message:"category fetched succesfully"})
+    
+  } catch (error) {
+    return res
+    .status(500)
+    .send({message:'failed to fetch all category', error})
+  }
+}
